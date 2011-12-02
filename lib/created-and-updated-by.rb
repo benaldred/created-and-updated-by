@@ -1,10 +1,14 @@
 require 'rubygems'
 require 'active_support'
-require 'active_support/core_ext'
+
+#changed this
+require 'active_support/all'
+#require 'active_support/core_ext'
 
 module CreatedAndUpdatedBy
 	class Stamper
-		include ActiveSupport::CoreExtensions
+		# commented this out
+		#include ActiveSupport::CoreExtensions
 		cattr_accessor :stampable, :attribute
 		def self.attach(stamp_model = :User, stamp_attribute = :current)
 			raise ArgumentError, "#{stamp_model} does not respond to #{stamp_attribute}" unless Object.const_get(stamp_model).respond_to?(stamp_attribute)
